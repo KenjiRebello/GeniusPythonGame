@@ -54,3 +54,41 @@ clear()
 playerScore()
 time.sleep(4)
 
+# Here's the gameplay
+while True:
+
+    # Showing before printing
+    print("Genius_bot Color: ")
+    time.sleep(difficulty)
+    clear()
+    playerScore()
+
+    # Adding color to the sequence
+    geniusColor()
+
+    # Combine Genious color to String
+    sequence = "".join(genius_bot)
+
+    # Showing Colors
+    for color in genius_bot:
+
+        # Between Colors
+        print("Genius_bot Color: ")
+        time.sleep(difficulty)
+        clear()
+        playerScore()
+
+        # Show Next Color
+        print("Genius_bot Color: ", color)
+        time.sleep(1)
+        clear()
+        playerScore()
+
+    # Get Input and Compare to Genius
+        if playerTurn() == sequence:
+
+            # Score
+            score += 1
+            clear()
+            playerScore()
+
