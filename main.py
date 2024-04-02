@@ -25,21 +25,16 @@ def playerScore():
 
 # Genius Difficulty
 # Here i try to create a logic to make the game harder or easier for the player (Very ugly coding, i know)
-def geniusDifficulty():
-    difficulty = int(input("How hard do you want the Genius Bot to be? \n 3 - Easy \n 2 - Medium \n 1 - Hard \n"))
+difficulty = int(input("How hard do you want the Genius Bot to be? \n ONLY NUMBERS \n 3 - Easy \n 2 - Medium \n 1 - Hard \n"))
 
-    if difficulty == 1:
-       difficulty = 0.1
+if difficulty == 1:
+   difficulty = 0.1
 
-    elif difficulty == 2:
-       difficulty = 0.3
+elif difficulty == 2:
+   difficulty = 0.3
 
-    elif difficulty == 3:
-       difficulty = 0.5
-    else:
-      print("Only numbers allowed! \n Closing the game...")
-
-    return difficulty
+elif difficulty == 3:
+   difficulty = 0.5
 
 # Usable colors
 colors = ("R", "B", "Y", "G")
