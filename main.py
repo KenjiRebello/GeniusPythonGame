@@ -9,6 +9,10 @@ import time
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
+# Player Current Score
+def playerScore():
+    print("Score: ", score)
+
 # Usable colors
 colors = ("R", "B", "Y", "G")
 
