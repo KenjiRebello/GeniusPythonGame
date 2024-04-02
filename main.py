@@ -1,6 +1,7 @@
 import os
 import random
 import time
+from highscore import *
 
 # In Brazil, we call Simon Game as Genius, so i'll use the name Genius here
 
@@ -57,19 +58,19 @@ time.sleep(4)
 # Here's the gameplay
 while True:
 
-    # Showing before printing
+# Showing before printing
     print("Genius_bot Color: ")
     time.sleep(difficulty)
     clear()
     playerScore()
 
-    # Adding color to the sequence
+# Adding color to the sequence
     geniusColor()
 
-    # Combine Genious color to String
+# Combine Genious color to String
     sequence = "".join(genius_bot)
 
-    # Showing Colors
+# Showing Colors
     for color in genius_bot:
 
         # Between Colors
@@ -84,7 +85,7 @@ while True:
         clear()
         playerScore()
 
-    # Get Input and Compare to Genius
+# Get Input and Compare to Genius
         if playerTurn() == sequence:
 
             # Score
@@ -92,3 +93,17 @@ while True:
             clear()
             playerScore()
 
+        # Game Over screen
+        else:
+            if score > highscore:
+
+                # GAME OVER text
+                clear()
+                print("GAME OVER \n New High Score!!!! \n ", score)
+
+                # Player inputs his name
+                name = input("Enter you name:")
+
+                # Save high score and end game
+                highscore.setHighScore(name, str(score))
+                break
