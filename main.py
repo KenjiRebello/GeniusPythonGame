@@ -153,7 +153,7 @@ while True:
             clear()
             print("GAME OVER")
 
-            getHighScore()
+            showHighScore()
 
             print("Score: ", score)
             break
