@@ -1,24 +1,47 @@
 import os
 import random
 import time
+import signal
+import sys
 
 # In Brazil, we call Simon Game as Genius, so i'll use the name Genius here
+
+# Removes the CTRL+C ugly error and gives a Good Bye instead
+def signal_handler(sig, frame):
+    sys.stdout.write('\r')
+    sys.stdout.write(' ' * 80)
+    sys.stdout.write('\r')
+    print('Good Bye o/ \nThanks for Playing!')
+    sys.exit(0)
+
+signal.signal(signal.SIGINT, signal_handler)
 
 # Clear screen logic
 # In case the OS is Windows, it will clear the screen with cls, otherwise it will use clear (NOTE: In Windows 11, both will work)
 def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
+# Function that gets the High Score
 def getHighScore():
     with open("highscore.txt", "r") as hs:
         bigScore = hs.readlines()
-        return bigScore
+    return bigScore
+
+# Function that shows the HighScore
+def showHighScore():
+    print(f"High Score:  {highscore} by {highname}")
     
-#Function that sets the High Score in highscore.txt    
+# Function that sets the High Score in highscore.txt    
 def setHighScore(name, score):
     with open("highscore.txt", "w") as hs:
-        hs.write(name, "\n")
-        hs.write(score)
+        hs.write(f"{name} \n {score}")
+
+# This creates the highscore.txt in case doesn't exists
+try:
+    getHighScore()
+except:
+    with open("highscore.txt", "w") as f:
+        f.write("null\n0")
 
 # The values for High Score
 record = getHighScore()
@@ -41,7 +64,7 @@ def playerScore():
     print("Score: ", score)
 
 # Genius Difficulty
-# Here i try to create a logic to make the game harder or easier for the player (Very ugly coding, i know)
+# Here i create a logic to make the game harder or easier for the player (Very ugly coding, i know)
 difficulty = int(input("How hard do you want the Genius Bot to be? \n ONLY NUMBERS \n 3 - Easy \n 2 - Medium \n 1 - Hard \n"))
 
 if difficulty == 1:
@@ -69,7 +92,7 @@ score = 0
 # Show Best Score
 clear()
 playerScore()
-time.sleep(4)
+time.sleep(2)
 
 # Here's the gameplay
 while True:
@@ -111,24 +134,26 @@ while True:
 
         # Game Over screen
     else:
+        # Checks if current score is higher than the high score
         if score > highscore:
 
             # GAME OVER text
             clear()
-            print("GAME OVER \n New High Score!!!! \n ", score)
+            print("GAME OVER \nNew High Score!!!! \n ", score)
 
-                # Player inputs his name
+            # Player inputs his name
             name = input("Enter you name:")
 
-                # Save high score and end game
-            highscore.setHighScore(name, str(score))
+            # Save high score and end game
+            setHighScore(name, str(score))
             break
-
+        
+        #If it isn't higher than the current high score, ends game and show high score
         else:
             clear()
             print("GAME OVER")
 
-            print(getHighScore)
+            getHighScore()
 
             print("Score: ", score)
             break
