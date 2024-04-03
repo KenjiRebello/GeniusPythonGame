@@ -49,7 +49,7 @@ highname = record[0]
 highscore = int(record[1])
 
 
-# Genius Colors
+# Genius chose his colors
 def geniusColor():
     global genius_bot
     genius_bot += random.choice(colors)
@@ -79,7 +79,7 @@ elif difficulty == 3:
 # Usable colors
 colors = ("R", "B", "Y", "G")
 
-# Genius Bot
+# Store the Genius Sequence here
 genius_bot = []
 
 # Genius Sequence
@@ -97,19 +97,19 @@ time.sleep(2)
 # Here's the gameplay
 while True:
 
-# Adding color to the sequence
+    # Adding color to the sequence
     geniusColor()
 
-# Combine Genious color to String
+    # Combine Genious color to String
     sequence = "".join(genius_bot)
 
-# Showing before printing
+    # Showing before printing
     print("Genius_bot Color: ")
     time.sleep(difficulty)
     clear()
     playerScore()
 
-# Showing Colors
+    # Showing Colors
     for color in genius_bot:
 
         # Between Colors
@@ -124,7 +124,7 @@ while True:
         clear()
         playerScore()
 
-# Get Input and Compare to Genius
+    # Get Input and Compare to Genius
     if playerTurn() == sequence:
 
         # Score
@@ -132,7 +132,7 @@ while True:
         clear()
         playerScore()
 
-        # Game Over screen
+    # Game Over screen
     else:
         # Checks if current score is higher than the high score
         if score > highscore:
