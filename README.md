@@ -13,7 +13,7 @@ To run this game you need:
 To play this game you need to:
 
 - Open your terminal (Linux and MAC) or CMD (Windows)
-- Execute the file with ./main.py or python main.py
+- Execute the file with " python main.py "
 - Genius will give you 3 starting colors between the 4 options: Red (R), Blue (B), Green (G) and Yellow (Y)
 - To win you have to input the colors correctly and in the same order that Genius gives you
 - It only stops when you miss or uses CTRL + C
